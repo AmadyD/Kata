@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:f="http://xmlns.jcp.org/jsf/core" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+          <f:view>
+        <h:head>
+            <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+            <h:outputStylesheet name="bootstrap-4.3.1-dist/css/bootstrap.min.css"/>  
+            <title>Nouvelle Transaction</title>
+        </h:head>
+            <body style="text-align: center">
+            	<nav class="navbar navbar-dark bg-dark">
+            	<span class="navbar-brand mb-0 h1"><h:outputText value="#{kataBean.user.sexe}  #{kataBean.user.firstName} #{kataBean.user.lastName}"/></span>
+            	<h:form>
+  					<h:commandButton action="#{kataBean.backToHome()}" value="Retour à l'accueil" styleClass="btn btn-light"/>
+            	</h:form>
+				</nav>
+				<div class="alert alert-dark" role="alert">
+  					<h:outputText value="#{kataBean.account.typeOfAccount}--N° #{kataBean.account.noAccount}  "/>
+				</div>
+				<h:outputScript rendered="#{kataBean.testInput eq 2}">
+    			alert("Problème d'execution !");
+			</h:outputScript>
+            <h2 style="margin-top : 5%">Enregistrement d'une nouvelle transaction</h2>
+            <h:form >
+            <div class="form-group" style="margin-top: 5%">
+              <div class="form-row" style="margin: auto">
+              
+   				 <div class="form-group col-md-3" style="margin: auto">
+      				<h5><label for="type">Type de transaction</label></h5>
+         			<h:selectOneMenu value = "#{kataBean.type}" styleClass="form-control"> 
+            			<f:selectItem itemValue = "dépôt" itemLabel = "Dépôt" /> 
+            			<f:selectItem itemValue = "retrait" itemLabel = "Retrait" />   
+         			</h:selectOneMenu>  
+    			</div>
+    			
+    			<div class="form-group col-md-3" style="margin: auto">
+      				<h5><label for="inputPassword4">Nom de la transaction</label></h5>
+      				<h:inputText id="transactionName" value="#{kataBean.transactionName}" styleClass="form-control" style="text-align: center; font-size: large" placeholder="intitulé"/>
+    			</div>
+    			
+  			</div>
+  			
+  			  <div class="form-group col-md-3" style="margin: auto">
+    			<h5><label for="inputAddress">Montant de la transaction</label></h5>
+    			<h:inputText id="transactionAmount" value="#{kataBean.transactionAmount}" styleClass="form-control" style="text-align: center; font-size: large" placeholder="Montant" required="true"
+                               requiredMessage="La saisie du montant est obligatoire !"
+                               validatorMessage="le montant saisi doit être un décimal supérieur à 0" />
+  			  </div>
+            
+            <h:commandButton action="#{kataBean.addTransaction()}" value="Valider" styleClass="btn btn-dark mb-2" style="margin-top: 2%"/>
+            </div>
+           </h:form>
+        </body>
+        </f:view>
+</html>

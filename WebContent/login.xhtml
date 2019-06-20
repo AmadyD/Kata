@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:f="http://xmlns.jcp.org/jsf/core" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <f:view>
+        <h:head>
+            <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
+            <h:outputStylesheet name="bootstrap-4.3.1-dist/css/bootstrap.min.css"/>  
+            <title>Login screen</title>
+        </h:head>
+        <body style="text-align: center">
+            <h1 style="margin-top : 5%">Connexion - Espace client</h1>
+            <h:outputScript rendered="#{kataBean.bool ne 1 and kataBean.exec eq true}">
+    			alert("Identifiant ou mot de passe incorrect");
+			</h:outputScript>
+            <h:form >
+            <div class="form-group" style="margin-top: 5%">
+            
+            <div class="form-group col-md-3" style="margin: auto;padding: auto">
+            <h5><label for="ex1">Identifiant :</label></h5>
+            <h:inputText id="login" value="#{kataBean.login}" styleClass="form-control" style="text-align: center; font-size: large"/>
+            </div>
+            
+             <div class="form-group col-md-3" style="margin: auto">
+            <h5><label for="ex1">Mot de passe :</label></h5>
+            <h:inputSecret id="password" value="#{kataBean.password}" styleClass="form-control" style="text-align: center;font-size: large"/>
+            </div>
+            
+            <h:commandButton action="#{kataBean.returnAction()}" value="Se connecter" styleClass="btn btn-dark mb-2" style="margin-top: 2%"/>
+            
+            </div>
+  
+                
+           </h:form>
+        </body>
+    </f:view>
+</html>
